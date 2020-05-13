@@ -23,8 +23,8 @@ export default function Appointment(props) {
       <Header time={props.time} />
       {props.interview ? (
         <Show
-          interviewers={props.interviewers}
-          student={props.student}
+          interviewers={props.interview.interviewer}
+          student={props.interview.student}
           onEdit={props.onEdit}
           onDelete={props.onDelete}
         />
