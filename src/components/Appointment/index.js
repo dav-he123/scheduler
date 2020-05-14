@@ -10,8 +10,6 @@ import Show from "components/Appointment/Show";
 // import Form from "components/Appointment/Form";
 
 export default function Appointment(props) {
-  // const variable = props.interview ? <Show /> : <Empty />;
-
   // const interviewerList = function () {
   //   props.interviewers.map((value) => {
   //     return <Show interviewers={value.interviewers} />;

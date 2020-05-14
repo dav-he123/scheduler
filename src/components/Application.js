@@ -43,7 +43,7 @@ export default function Application(props) {
 
   const setDay = (day) => setState({ ...state, day }); //previous state is ...spread
 
-  const setDays = (days) => setState({ ...state, days });
+  // const setDays = (days) => setState({ ...state, days });
 
   const [state, setState] = useState({
     day: "Tuesday",
@@ -57,12 +57,41 @@ export default function Application(props) {
     return <Appointment key={appointment.id} {...appointment} />;
   });
 
+  // useEffect(() => {
+  //   axios.get(`http://localhost:8001/api/days`).then((response) => {
+  //     console.log(response);
+
+  //     Promise.all([
+  //       Promise.resolve(`/api/days`),
+  //       Promise.resolve(`/api/appointments`),
+  //       Promise.resolve("third"),
+  //     ]).then((all) => {
+  //       setState((state) => ({
+  //         days: all[0],
+  //         appointments: all[1],
+  //         third: all[2],
+  //       }));
+  //     });
+  //     // setDays(response.data);
+  //   }, []);
+  // });
+
   useEffect(() => {
-    axios.get(`http://localhost:8001/api/days`).then((response) => {
-      // console.log(response);
-      setDays(response.data);
-    }, []);
-  });
+    Promise.all([
+      Promise.resolve(axios.get(`http://localhost:8001/api/days`)),
+      Promise.resolve(axios.get(`http://localhost:8001/api/appointments`)),
+      Promise.resolve(axios.get("third")),
+    ]).then((all) => {
+      setState((prev) => ({
+        days: all[0],
+        appointments: all[1],
+        third: all[2],
+      }));
+    });
+    // setDays(response.data);
+  }, []);
+
+  // setState(state => ({...state, days: response.data}))
 
   return (
     <main className="layout">
