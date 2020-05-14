@@ -7,6 +7,7 @@ import "components/Application.scss";
 import DayList from "components/DayList";
 
 import Appointment from "components/Appointment";
+// import { getAppointmentsForDay } from "helpers/selectors";
 
 const appointments = [
   {
@@ -80,12 +81,13 @@ export default function Application(props) {
     Promise.all([
       Promise.resolve(axios.get(`http://localhost:8001/api/days`)),
       Promise.resolve(axios.get(`http://localhost:8001/api/appointments`)),
-      Promise.resolve(axios.get("third")),
+      // Promise.resolve(axios.get("third")),
     ]).then((all) => {
+      console.log("all", all);
       setState((prev) => ({
-        days: all[0],
-        appointments: all[1],
-        third: all[2],
+        days: all[0].data,
+        appointments: all[1].data,
+        // third: all[2],
       }));
     });
     // setDays(response.data);
