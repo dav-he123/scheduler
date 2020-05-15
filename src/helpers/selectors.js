@@ -32,7 +32,7 @@ export function getInterview(state, interview) {
 export function getInterviewersForDay(state, day) {
   let finalArr = [];
 
-  const interviewersDays = state.interviewers.filter((key) => {
+  const interviewersDays = state.days.filter((key) => {
     return key.name === day;
   });
 
@@ -44,8 +44,8 @@ export function getInterviewersForDay(state, day) {
 
   console.log("AAAAA", interviewersDays);
 
-  let interviewersArr = interviewersDays[0].interviewers;
-  for (let key in interviewersArr) {
+  let interviewersArr = interviewersDays[0].appointments;
+  for (let key of interviewersArr) {
     finalArr.push(state.interviewers[key]);
   }
   return finalArr;
