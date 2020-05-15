@@ -7,7 +7,7 @@ import "components/Application.scss";
 import DayList from "components/DayList";
 
 import Appointment from "components/Appointment";
-import { getAppointmentsForDay } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 
 export default function Application(props) {
   // const [day, setDay] = useState("Monday");
@@ -28,20 +28,19 @@ export default function Application(props) {
   // const scheduleList = getAppointmentsForDay(state, state.day).map(
   //   (appointment) => {
 
-  const appointments = getAppointmentsForDay(state, day);
-
-  const scheduleList = appointments.map((appointment) => {
-    const interview = getInterview(state, appointment.interview);
-    return (
-      <Appointment
-        key={appointment.id}
-        id={appointment.id}
-        time={appointment.time}
-        interview={interview}
-      />
-    );
-  });
-
+  const scheduleList = getAppointmentsForDay(state, state.day).map(
+    (appointment) => {
+      const interview = getInterview(state, appointment.interview);
+      return (
+        <Appointment
+          key={appointment.id}
+          id={appointment.id}
+          time={appointment.time}
+          interview={interview}
+        />
+      );
+    }
+  );
   useEffect(() => {
     Promise.all([
       Promise.resolve(axios.get(`http://localhost:8001/api/days`)),

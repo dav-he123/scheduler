@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "components/Appointment/styles.scss";
 import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
-// import Confirm from "components/Appointment/Confirm";
-// import Status from "components/Appointment/Status";
-// import Error from "components/Appointment/Error";
-// import Form from "components/Appointment/Form";
+import useVisualMode from "hooks/useVisualMode";
+
+import Form from "components/Appointment/Form";
 
 export default function Appointment(props) {
   // const interviewerList = function () {
@@ -16,42 +15,35 @@ export default function Appointment(props) {
   //   });
   // };
 
+  const EMPTY = "EMPTY";
+  const SHOW = "SHOW";
+  const CREATE = "CREATE";
+
+  const { mode, transition, back } = useVisualMode(
+    props.interview ? SHOW : EMPTY
+  );
+
   return (
     <article className="appointment">
       <Header time={props.time} />
-      {props.interview ? (
+
+      {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
+      {mode === SHOW && (
         <Show
-          interviewers={props.interview.interviewer}
           student={props.interview.student}
+          interviewer={props.interview.interviewer}
           onEdit={props.onEdit}
           onDelete={props.onDelete}
         />
-      ) : (
-        <Empty onAdd={props.onAdd} />
       )}
 
-      {/* <Empty onAdd={props.onAdd} />
-      <Show
-        interviewers={props.interviewers}
-        student={props.student}
-        onEdit={props.onEdit}
-        onDelete={props.onDelete}
-      /> */}
-
-      {/* <Confirm
-        message={props.message}
-        onCancel={props.onCancel}
-        onConfirm={props.onConfirm}
-      />
-      <Status message={props.message} />
-      <Error message={props.message} onClose={props.onClose} /> */}
-      {/* <Form
-        message={props.message}
-        interviewers={props.interviewers}
-        // interviewer={props.interviewer.id}
-        onSave={props.onSave}
-        onCancel={props.onCancel}
-      /> */}
+      {mode === CREATE && (
+        <Form
+          interviewers={[]}
+          // onSave={action("onSave")}
+          onCancel={() => back()}
+        />
+      )}
     </article>
   );
 }

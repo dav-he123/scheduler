@@ -160,7 +160,7 @@ storiesOf("Appointment", module)
   .add("Show", () => (
     <Show
       student="Lydia Miller-Jones"
-      interviewers={interviewers}
+      interviewer={interviewer}
       onEdit={action("onEdit")}
       onDelete={action("onDelete")}
     />
@@ -207,6 +207,8 @@ storiesOf("Appointment", module)
         id={1}
         time="12pm"
         interview={{ student: "Lydia Miller-Jones", interviewer }}
+        // student={"Lydia Miller-Jones"}
+        // interviewer={interviewer.name}
       />
       <Appointment id="last" time="1pm" />
     </Fragment>
