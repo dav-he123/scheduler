@@ -42,7 +42,7 @@ export function getInterviewersForDay(state, day) {
     return [];
   }
 
-  console.log("AAAAA", interviewersDays);
+  // console.log("AAAAA", interviewersDays);
 
   let interviewersArr = interviewersDays[0].appointments;
   for (let key of interviewersArr) {
