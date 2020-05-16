@@ -5,22 +5,19 @@ import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
 import Status from "components/Appointment/Status";
+import Confirm from "components/Appointment/Confirm";
 
 import useVisualMode from "hooks/useVisualMode";
 
 import Form from "components/Appointment/Form";
 
 export default function Appointment(props) {
-  // const interviewerList = function () {
-  //   props.interviewers.map((value) => {
-  //     return <Show interviewers={value.interviewers} />;
-  //   });
-  // };
-
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
   const SAVING = "SAVING";
+  const CONFIRM = "CONFIRM";
+  const DELETING = "DELETING";
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
@@ -37,13 +34,11 @@ export default function Appointment(props) {
     transition(SAVING);
 
     props.bookInterview(props.id, interview).then(() => transition(SHOW));
+  }
 
-    // let result = props.bookInterview(props.id, interview);
-
-    // console.log("result", result);
-
-    // props.bookInterview(props.id, interview);
-    // transition(SHOW);
+  function appointmentDelete() {
+    transition(DELETING);
+    props.cancelInterview(props.id).then(() => transition(EMPTY));
   }
 
   return (
@@ -70,6 +65,17 @@ export default function Appointment(props) {
       )}
 
       {mode === SAVING && <Status message="Saving....." />}
+
+      {mode === DELETING && <Status message="Deleting....." />}
+
+      {mode === CONFIRM && (
+        <Confirm
+          // interviewers={props.interviewers}
+          message={"Press to confirm to delete"}
+          onConfirm={appointmentDelete}
+          onCancel={() => back()}
+        />
+      )}
     </article>
   );
 }
