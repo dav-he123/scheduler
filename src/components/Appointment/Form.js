@@ -28,11 +28,14 @@ export default function Form(props) {
             name={name}
             type="text"
             placeholder="Enter Student Name"
+            value={name}
             onChange={(e) => {
               setName(e.target.value);
             }}
             // onSubmit={(event) => event.preventDefault()}
             /*
+
+            
           This must be a controlled component
         */
           />

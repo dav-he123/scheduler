@@ -182,6 +182,7 @@ storiesOf("Appointment", module)
   .add("Edit", () => (
     <Form
       message="Are you sure you want to edit?"
+      name={interviewer.name}
       interviewers={interviewers}
       interviewer={interviewer.id}
       onSave={action("onSave")}
