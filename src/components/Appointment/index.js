@@ -32,7 +32,8 @@ export default function Appointment(props) {
     console.log("NAME", name);
 
     transition(SAVING);
-
+    console.log("ID", props.id);
+    console.log("INTERVIEW", interview);
     props.bookInterview(props.id, interview).then(() => transition(SHOW));
   }
 
@@ -49,9 +50,11 @@ export default function Appointment(props) {
       {mode === SHOW && (
         <Show
           student={props.interview.student}
-          interviewer={props.interview.interviewer}
+          interviewer={props.interview.interviewer.name}
           onEdit={props.onEdit}
-          onDelete={props.onDelete}
+          // onDelete={props.onDelete}
+          onDelete={() => transition(CONFIRM)}
+          // onDelete={() => appointmentDelete()}
         />
       )}
 
@@ -60,7 +63,7 @@ export default function Appointment(props) {
           interviewers={props.interviewers}
           // interviewers={[]}
           onSave={save}
-          onCancel={() => back()}
+          onCancel={() => transition(EMPTY)}
         />
       )}
 
@@ -71,9 +74,10 @@ export default function Appointment(props) {
       {mode === CONFIRM && (
         <Confirm
           // interviewers={props.interviewers}
-          message={"Press to confirm to delete"}
-          onConfirm={appointmentDelete}
-          onCancel={() => back()}
+          message={"Are you sure you would like to delete?"}
+          onConfirm={() => appointmentDelete()}
+          // onCancel={props.onDelete}
+          onCancel={() => transition(SHOW)}
         />
       )}
     </article>
