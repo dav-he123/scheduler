@@ -207,7 +207,8 @@ storiesOf("Appointment", module)
       <Appointment
         id={1}
         time="12pm"
-        interview={{ student: "Lydia Miller-Jones", interviewer }}
+        // interview={{ student: "Lydia Miller-Jones", interviewer }}
+        student={"Lydia Miller-Jones"}
         onDelete={action("onDelete")}
         onEdit={action("onEdit")}
         // student={"Lydia Miller-Jones"}
