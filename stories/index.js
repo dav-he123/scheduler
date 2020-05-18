@@ -208,6 +208,8 @@ storiesOf("Appointment", module)
         id={1}
         time="12pm"
         interview={{ student: "Lydia Miller-Jones", interviewer }}
+        onDelete={action("onDelete")}
+        onEdit={action("onEdit")}
         // student={"Lydia Miller-Jones"}
         // interviewer={interviewer.name}
       />
