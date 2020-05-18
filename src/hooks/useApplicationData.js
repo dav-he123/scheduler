@@ -5,8 +5,6 @@ import axios from "axios";
 import "components/Application.scss";
 
 export default function useApplicationData(props) {
-  const setDay = (day) => setState({ ...state, day }); //previous state is ...spread
-
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -15,6 +13,8 @@ export default function useApplicationData(props) {
   });
 
   console.log("State", state);
+
+  const setDay = (day) => setState({ ...state, day }); //previous state is ...spread
 
   useEffect(() => {
     Promise.all([
@@ -34,7 +34,7 @@ export default function useApplicationData(props) {
   }, []);
 
   function bookInterview(id, interview) {
-    console.log("BBB", id, interview);
+    // console.log("BBB", id, interview);
 
     const appointment = {
       ...state.appointments[id],
