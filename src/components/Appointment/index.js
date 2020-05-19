@@ -7,9 +7,7 @@ import Show from "components/Appointment/Show";
 import Status from "components/Appointment/Status";
 import Confirm from "components/Appointment/Confirm";
 import Error from "components/Appointment/Error";
-
 import useVisualMode from "hooks/useVisualMode";
-
 import Form from "components/Appointment/Form";
 
 export default function Appointment(props) {
@@ -41,7 +39,11 @@ export default function Appointment(props) {
     // console.log("INTERVIEW", interview);
     props
       .bookInterview(props.id, interview)
-      .then(() => transition(SHOW))
+      .then((prev) => {
+        console.log("Name testing");
+        console.log("Previous", prev);
+        transition(SHOW);
+      })
       .catch((error) => transition(ERROR_SAVE, true));
   }
 
@@ -53,6 +55,7 @@ export default function Appointment(props) {
       .catch((error) => transition(ERROR_DELETE, true));
   }
 
+  console.log("TUESDAY", props);
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -61,7 +64,7 @@ export default function Appointment(props) {
       {mode === SHOW && (
         <Show
           student={props.interview.student}
-          // interviewer={props.interview.interviewer.name}
+          interviewer={props.interview.interviewer.name}
           // onDelete={props.onDelete}
           // onDelete={() => appointmentDelete()}
           onDelete={() => transition(CONFIRM)}
@@ -74,7 +77,7 @@ export default function Appointment(props) {
           interviewers={props.interviewers}
           // interviewers={[]}
           onSave={save}
-          onCancel={() => transition(EMPTY)}
+          onCancel={() => back()}
         />
       )}
 
@@ -88,7 +91,7 @@ export default function Appointment(props) {
           message={"Are you sure you would like to delete?"}
           onConfirm={() => appointmentDelete()}
           // onCancel={props.onDelete}
-          onCancel={() => transition(SHOW)}
+          onCancel={() => back()}
         />
       )}
 

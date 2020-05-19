@@ -32,17 +32,21 @@ export function getInterview(state, interview) {
 export function getInterviewersForDay(state, day) {
   let finalArr = [];
 
+  console.log("BBBBB", state.days);
+
+  console.log("DAY", day);
+
   const interviewersDays = state.days.filter((key) => {
     return key.name === day;
   });
 
-  // console.log(appointmentDays);
+  console.log("interviewersDays right here", interviewersDays);
 
   if (interviewersDays.length === 0) {
     return [];
   }
 
-  // console.log("AAAAA", interviewersDays);
+  console.log("AAAAA", state.interviewers);
 
   let interviewersArr = interviewersDays[0].appointments;
   for (let key of interviewersArr) {

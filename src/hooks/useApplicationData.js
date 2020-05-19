@@ -46,11 +46,26 @@ export default function useApplicationData(props) {
       [id]: appointment,
     };
 
+    const days = state.days.map(function (day) {
+      // console.log("DAY HERE", day);
+
+      if (day.name === state.day) {
+        day.spots--;
+      }
+
+      // console.log("DAY HERE 2", day);
+
+      return day;
+    });
+
     return axios
       .put(`http://localhost:8001/api/appointments/${id}`, appointment)
-      .then(() => {
+      .then((prev) => {
+        console.log("BOOKINTERVIEW", prev);
+
         setState({
           ...state,
+          days,
           appointments,
         });
       });
@@ -68,15 +83,22 @@ export default function useApplicationData(props) {
     };
 
     const days = state.days.map(function (day) {
+      console.log("DAY HERE", day);
+
       if (day.name === state.day) {
         day.spots++;
       }
+
+      console.log("DAY HERE 2", day);
+
       return day;
     });
 
     return axios
       .delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
+        console.log("HITS IN DELETE");
+
         setState({
           ...state,
           days,
