@@ -61,8 +61,7 @@ export default function useApplicationData(props) {
     return axios
       .put(`http://localhost:8001/api/appointments/${id}`, appointment)
       .then((prev) => {
-        console.log("BOOKINTERVIEW", prev);
-
+        // console.log("BOOKINTERVIEW", prev);
         setState({
           ...state,
           days,

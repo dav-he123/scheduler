@@ -55,6 +55,8 @@ export default function Appointment(props) {
       .catch((error) => transition(ERROR_DELETE, true));
   }
 
+  console.log("PROPS-INTERVIEWERS1", props.interviewers);
+
   console.log("TUESDAY", props);
   return (
     <article className="appointment">
