@@ -5,6 +5,9 @@ import {
   cleanup,
   waitForElement,
   fireEvent,
+  getByText,
+  prettyDOM,
+  getAllByTestId,
 } from "@testing-library/react";
 
 import Application from "components/Application";
@@ -28,13 +31,17 @@ describe("Application", () => {
   });
 
   it("loads data, books an interview and reduces the spots remaining for the first day by 1", async () => {
-    const { getByText } = render(<Application />);
+    const { container } = render(<Application />);
 
-    await waitForElement(() => getByText("Monday"));
+    await waitForElement(() => getByText(container, "Archie Cohen"));
 
-    // return waitForElement(() => getByText("Monday")).then(() => {
-    fireEvent.click(getByText("Tuesday"));
+    const appointments = getAllByTestId(container, "appointment");
 
-    expect(getByText("Leopold Silvers")).toBeInTheDocument();
+    const appointment = getAllByTestId(container, "appointment")[0];
+
+    // console.log(container);
+    console.log(prettyDOM(container));
+    console.log(prettyDOM(appointments));
+    console.log(prettyDOM(appointment));
   });
 });
