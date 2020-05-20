@@ -146,6 +146,8 @@ describe("Application", () => {
       target: { value: "Lydia Miller-Jones" },
     });
 
+    fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
+
     // 5. Click the "Save" button on the display.
     // fireEvent.click(queryByText(appointment, "Save"));
 
@@ -158,12 +160,21 @@ describe("Application", () => {
     // fireEvent.click(getByText(appointment, "Save"));
     await waitForElement(() => getByText(appointment, "Saving....."));
 
-    // 8. Check that the DayListItem with the text "Monday" also has the text "1 spots remaining".
+    // // 8. Check that the DayListItem with the text "Monday" also has the text "1 spots remaining".
     const day = getAllByTestId(container, "day").find((day) =>
       queryByText(day, "Monday")
     );
-    expect(getByText(day, "1 spots remaining")).toBeInTheDocument();
+    expect(getByText(day, "no spots remaining")).toBeInTheDocument();
 
     debug();
   });
+
+  it("shows the save error when failing to save an appointment", () => {
+    axios.put.mockRejectedValueOnce();
+  });
+
+  it("shows the delete error when failing to delete an existing appointment"),
+    async () => {
+      axios.put.mockRejectedValueOnce();
+    };
 });
