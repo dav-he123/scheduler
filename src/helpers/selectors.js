@@ -51,8 +51,8 @@ export function getInterviewersForDay(state, day) {
   let interviewersArr = interviewersDays[0].interviewers;
   for (let key of interviewersArr) {
     finalArr.push(state.interviewers[key]);
-    console.log("KEY1", key);
-    console.log("stateforinterviewers", state.interviewers);
+    // console.log("KEY1", key);
+    // console.log("stateforinterviewers", state.interviewers);
   }
   return finalArr;
 }
