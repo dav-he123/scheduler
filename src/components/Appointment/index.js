@@ -59,7 +59,7 @@ export default function Appointment(props) {
 
   console.log("TUESDAY", props);
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
 
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
@@ -114,11 +114,14 @@ export default function Appointment(props) {
       )}
 
       {mode === ERROR_SAVE && (
-        <Error message={"There an error with save"} onClose={() => back()} />
+        <Error message={"There is an error with save"} onClose={() => back()} />
       )}
 
       {mode === ERROR_DELETE && (
-        <Error message={"There an error with delete"} onClose={() => back()} />
+        <Error
+          message={"There is an error with delete"}
+          onClose={() => back()}
+        />
       )}
     </article>
   );
