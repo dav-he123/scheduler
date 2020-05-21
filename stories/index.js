@@ -48,6 +48,7 @@ storiesOf("Button", module)
     </Button>
   ));
 
+//storiesOf for DayListItem component
 storiesOf("DayListItem", module) //Initiates Storybook and registers our DayListItem component
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
@@ -77,6 +78,7 @@ const days = [
   },
 ];
 
+//storiesOf for DayList component
 storiesOf("DayList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
@@ -94,6 +96,7 @@ const interviewer = {
   avatar: "https://i.imgur.com/LpaY82x.png",
 };
 
+//storiesOf for InterviewerListItem component
 storiesOf("InterviewerListItem", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
@@ -130,6 +133,7 @@ const interviewers = [
   { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" },
 ];
 
+//storiesOf for InterviewerList component
 storiesOf("InterviewerList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],

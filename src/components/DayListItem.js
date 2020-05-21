@@ -5,6 +5,7 @@ const classNames = require("classnames");
 
 export default function DayListItem(props) {
   const formatSpots = () => {
+    //formatSpots function determines the # of spots remaining in the specified day
     if (props.spots === 0) {
       return "no spots remaining";
     } else {
@@ -19,7 +20,7 @@ export default function DayListItem(props) {
   return (
     <li
       className={dayClass}
-      onClick={() => props.setDay(props.name)}
+      onClick={() => props.setDay(props.name)} //onClick used to handle item click event that sets the day
       data-testid="day"
     >
       <h2 className="text--regular">{props.name}</h2>

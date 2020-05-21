@@ -43,6 +43,7 @@ export default function Application(props) {
   );
 
   return (
+    // Appointments and DayList component being rendered
     <main className="layout">
       <section className="sidebar">
         <img

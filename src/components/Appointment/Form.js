@@ -5,16 +5,18 @@ import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
 export default function Form(props) {
-  const [name, setName] = useState(props.name || "");
-  const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [name, setName] = useState(props.name || ""); //need to keep track of information for the name by using useState
+  const [interviewer, setInterviewer] = useState(props.interviewer || null); //need to keep track of information for the interviewer by using useState
   const [error, setError] = useState("");
 
   const reset = function () {
+    //created reset function so when user clicks Cancel button, the form valuse are cleared
     setName("");
     setInterviewer(null);
   };
 
   const cancel = function () {
+    //cancel function calls the reset function to update the component
     reset();
     props.onCancel();
   };
