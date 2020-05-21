@@ -9,6 +9,7 @@ import { fireEvent } from "@testing-library/react";
 afterEach(cleanup);
 
 describe("Form", () => {
+  //various tests implemented for test driven development
   const interviewers = [
     {
       id: 1,

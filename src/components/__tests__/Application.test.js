@@ -21,6 +21,7 @@ import Application from "components/Application";
 afterEach(cleanup);
 
 describe("Application", () => {
+  //various tests implemented to test the data
   xit("renders without crashing", () => {
     render(<Application />);
   });

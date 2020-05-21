@@ -24,6 +24,7 @@ export default function Application(props) {
   } = useApplicationData(); //updates the state using useApplicationData
 
   const appointments = getAppointmentsForDay(state, state.day).map(
+    //maps over the array to display the list
     (appointment) => {
       const interview = getInterview(state, appointment.interview);
 
