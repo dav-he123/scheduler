@@ -53,8 +53,6 @@ export default function useApplicationData(props) {
         day.spots--;
       }
 
-      // console.log("DAY HERE 2", day);
-
       return day;
     });
 

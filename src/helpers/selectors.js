@@ -5,8 +5,6 @@ export function getAppointmentsForDay(state, day) {
     return key.name === day;
   });
 
-  // console.log(appointmentDays);
-
   if (appointmentDays.length === 0) {
     return [];
   }
@@ -40,13 +38,9 @@ export function getInterviewersForDay(state, day) {
     return key.name === day;
   });
 
-  // console.log("interviewersDays right here", interviewersDays);
-
   if (interviewersDays.length === 0) {
     return [];
   }
-
-  // console.log("AAAAA", state.interviewers);
 
   let interviewersArr = interviewersDays[0].interviewers;
   for (let key of interviewersArr) {
