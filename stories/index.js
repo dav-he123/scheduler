@@ -211,7 +211,6 @@ storiesOf("Appointment", module)
         student={"Lydia Miller-Jones"}
         onDelete={action("onDelete")}
         onEdit={action("onEdit")}
-        // student={"Lydia Miller-Jones"}
         interviewer={interviewer.name}
       />
       <Appointment id="last" time="1pm" />

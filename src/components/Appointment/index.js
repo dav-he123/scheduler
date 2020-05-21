@@ -28,13 +28,7 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  // function save(name, interviewer) {
   function save(interview) {
-    // const interview = {
-    //   student: name,
-    //   interviewer,
-    // };
-
     transition(SAVING);
     props
       .bookInterview(props.id, interview)
@@ -52,10 +46,6 @@ export default function Appointment(props) {
       .cancelInterview(props.id)
       .then(() => transition(EMPTY))
       .catch((error) => transition(ERROR_DELETE, true));
-  }
-
-  if (props.interview) {
-    console.log("AAAAAAAAAAA", props.interview.interviewer);
   }
 
   return (

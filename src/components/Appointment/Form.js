@@ -43,11 +43,7 @@ export default function Form(props) {
               setName(e.target.value);
             }}
             data-testid="student-name-input"
-
-            // onSubmit={(event) => event.preventDefault()}
-            /*
-
-            
+            /*            
           This must be a controlled component
         */
           />
@@ -63,10 +59,8 @@ export default function Form(props) {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={cancel}>
-            {/* <Button danger onClick={() => props.onCancel(id)}> */}
             Cancel
           </Button>
-          {/* <Button confirm onClick={() => props.onSave(name, interviewer)}> */}
           <Button confirm onClick={validate}>
             Save
           </Button>
