@@ -98,15 +98,15 @@ export default function Appointment(props) {
         />
       )}
 
-      {mode === ERROR && (
+      {mode === ERROR && ( //error message displays when there is an error
         <Error message={"There is an error"} onClose={() => back()} />
       )}
 
-      {mode === ERROR_SAVE && (
+      {mode === ERROR_SAVE && ( //error message displays when error with save
         <Error message={"There is an error with save"} onClose={() => back()} />
       )}
 
-      {mode === ERROR_DELETE && (
+      {mode === ERROR_DELETE && ( //error message displays when error with delete
         <Error
           message={"There is an error with delete"}
           onClose={() => back()}
