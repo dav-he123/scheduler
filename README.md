@@ -26,4 +26,5 @@ npm run storybook
 
 ## Screenshots
 
-![""]()
+!["A user has created 2 appointments"](https://github.com/dav-he123/scheduler/blob/master/docs/application-form.png?raw=true)
+!["A user is editing an appointment and deleting an appointment."](https://github.com/dav-he123/scheduler/blob/master/docs/edit-form.png?raw=true)
