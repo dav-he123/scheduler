@@ -26,13 +26,14 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  function save(name, interviewer) {
-    const interview = {
-      student: name,
-      interviewer,
-    };
+  // function save(name, interviewer) {
+  function save(interview) {
+    // const interview = {
+    //   student: name,
+    //   interviewer,
+    // };
 
-    console.log("NAME", name);
+    // console.log("NAME", name);
 
     transition(SAVING);
     // console.log("ID", props.id);
@@ -78,7 +79,9 @@ export default function Appointment(props) {
         <Form
           interviewers={props.interviewers}
           // interviewers={[]}
-          onSave={save}
+          onSave={(name, interviewer) =>
+            save({ student: name, interviewer, newInterview: true })
+          }
           onCancel={() => back()}
         />
       )}
@@ -104,7 +107,9 @@ export default function Appointment(props) {
           // student={props.interview.student}
           // interviewers={[]}
           name={props.interview.student}
-          onSave={save}
+          onSave={(name, interviewer) =>
+            save({ student: name, interviewer, newInterview: false })
+          }
           onCancel={() => back()}
         />
       )}

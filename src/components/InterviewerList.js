@@ -11,11 +11,6 @@ export default function InterviewerList(props) {
 
     return (
       <InterviewerListItem
-        // key={item ? item.id : 100}
-        // name={item ? item.name : "David"}
-        // avatar={item ? item.avatar : "https://i.imgur.com/LpaY82x.png"}
-        // selected={item ? item.id === props.value : 1}
-
         key={item.id}
         name={item.name}
         avatar={item.avatar}

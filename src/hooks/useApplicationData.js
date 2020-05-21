@@ -49,7 +49,7 @@ export default function useApplicationData(props) {
     const days = state.days.map(function (day) {
       // console.log("DAY HERE", day);
 
-      if (day.name === state.day) {
+      if (day.name === state.day && interview.newInterview) {
         day.spots--;
       }
 

@@ -1,5 +1,7 @@
 # Interview Scheduler
 
+Interview Scheduler is a project based upon react, where a user can select time slots within a day of the week, and assign a student to an interviewer to create an appointment. The user is able to add, edit, and cancel appointments.
+
 ## Setup
 
 Install dependencies with `npm install`.
@@ -21,3 +23,5 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Screenshots
