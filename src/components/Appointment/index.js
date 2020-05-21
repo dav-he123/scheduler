@@ -49,6 +49,7 @@ export default function Appointment(props) {
   }
 
   return (
+    // components are rendered to be displayed from the client side
     <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
 
