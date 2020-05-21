@@ -65,7 +65,6 @@ export default function Appointment(props) {
       {mode === CREATE && (
         <Form
           interviewers={props.interviewers}
-          // interviewers={[]}
           onSave={(name, interviewer) =>
             save({ student: name, interviewer, newInterview: true })
           }
@@ -79,10 +78,8 @@ export default function Appointment(props) {
 
       {mode === CONFIRM && (
         <Confirm
-          // interviewers={props.interviewers}
           message={"Are you sure you would like to delete?"}
           onConfirm={() => appointmentDelete()}
-          // onCancel={props.onDelete}
           onCancel={() => back()}
         />
       )}
@@ -91,8 +88,6 @@ export default function Appointment(props) {
         <Form
           interviewers={props.interviewers}
           interviewer={props.interview.name}
-          // student={props.interview.student}
-          // interviewers={[]}
           name={props.interview.student}
           onSave={(name, interviewer) =>
             save({ student: name, interviewer, newInterview: false })
