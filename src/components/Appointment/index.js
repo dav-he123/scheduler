@@ -22,13 +22,12 @@ export default function Appointment(props) {
   const ERROR_DELETE = "ERROR_DELETE";
   const ERROR = "ERROR";
 
-  console.log("PROPS", props);
-
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
   function save(interview) {
+    //save function allows a interview to be booked/added
     transition(SAVING);
     props
       .bookInterview(props.id, interview)
@@ -41,6 +40,8 @@ export default function Appointment(props) {
   }
 
   function appointmentDelete(event) {
+    //appointmentDelete function allows a interview to be deleted
+
     transition(DELETING, true);
     props
       .cancelInterview(props.id)

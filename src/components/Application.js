@@ -21,7 +21,7 @@ export default function Application(props) {
     setDay,
     bookInterview,
     cancelInterview,
-  } = useApplicationData();
+  } = useApplicationData(); //updates the state using useApplicationData
 
   const appointments = getAppointmentsForDay(state, state.day).map(
     (appointment) => {
