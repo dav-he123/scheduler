@@ -29,3 +29,6 @@ export default function useVisualMode(initial) {
 
   return { mode, transition, back };
 }
+
+// Major bugs:
+// - Interviews can be saved without a valid interviewer - Editing an interview clears the previously selected interviewer

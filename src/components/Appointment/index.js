@@ -28,15 +28,21 @@ export default function Appointment(props) {
 
   function save(interview) {
     //save function allows a interview to be booked/added
-    transition(SAVING);
-    props
-      .bookInterview(props.id, interview)
-      .then((prev) => {
-        console.log("Name testing");
-        console.log("Previous", prev);
-        transition(SHOW);
-      })
-      .catch((error) => transition(ERROR_SAVE, true));
+    if (interview.interviewer === null) {
+      transition(ERROR_SAVE, true);
+    } else {
+      transition(SAVING);
+      props
+        .bookInterview(props.id, interview)
+        .then((prev) => {
+          console.log("Name testing");
+          console.log("Previous", prev);
+          transition(SHOW);
+        })
+        .catch((error) => {
+          transition(ERROR_SAVE, true);
+        });
+    }
   }
 
   function appointmentDelete(event) {
@@ -89,7 +95,7 @@ export default function Appointment(props) {
       {mode === EDIT && (
         <Form
           interviewers={props.interviewers}
-          interviewer={props.interview.name}
+          interviewer={props.interview.interviewer.name}
           name={props.interview.student}
           onSave={(name, interviewer) =>
             save({ student: name, interviewer, newInterview: false })

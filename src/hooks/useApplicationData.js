@@ -52,7 +52,6 @@ export default function useApplicationData(props) {
       if (day.name === state.day && interview.newInterview) {
         day.spots--;
       }
-
       return day;
     });
 
