@@ -26,6 +26,8 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  console.log("AAA-PROPS", props);
+
   function save(interview) {
     //save function allows a interview to be booked/added
     if (interview.interviewer === null) {
@@ -95,7 +97,7 @@ export default function Appointment(props) {
       {mode === EDIT && (
         <Form
           interviewers={props.interviewers}
-          interviewer={props.interview.interviewer.name}
+          interviewer={props.interview.interviewer.id}
           name={props.interview.student}
           onSave={(name, interviewer) =>
             save({ student: name, interviewer, newInterview: false })
