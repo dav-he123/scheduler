@@ -26,8 +26,6 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  console.log("AAA-PROPS", props);
-
   function save(interview) {
     //save function allows a interview to be booked/added
     if (interview.interviewer === null) {
